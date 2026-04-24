@@ -1,0 +1,58 @@
+# Configuration for Phishmate
+
+# Feed sources
+feeds:
+  - "https://phish.co.za/latest/phishing-links-ACTIVE.txt"
+  - "https://phish.co.za/latest/phishing-domains-ACTIVE.txt"
+  - "http://data.phishtank.com/data/online-valid.csv"
+  - "http://www.botvrij.eu/data/ioclist.domain.raw"
+  - "https://gist.githubusercontent.com/BBcan177/4a8bf37c131be4803cb2/raw"
+  - "https://raw.githubusercontent.com/shreshta-labs/newly-registered-domains/refs/heads/main/nrd-1w.csv"
+  - "https://phishing.army/download/phishing_army_blocklist_extended.txt"
+  - "https://raw.githubusercontent.com/MikhailKasimov/validin-phish-feed/refs/heads/main/validin-phish-feed-4.txt"
+  - "https://raw.githubusercontent.com/romainmarcoux/malicious-domains/refs/heads/main/full-domains-aa.txt"
+  - "https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt"
+  - "https://raw.githubusercontent.com/phishdestroy/destroylist/main/list.txt"
+  - "https://blocklistproject.github.io/Lists/phishing.txt"
+
+# Worker settings
+workers:
+  max_workers: 8
+  max_process_workers: 4
+
+# Debug settings
+debug:
+  debug_rejections: true
+  checkpoint_dir: "checkpoint"
+  progress_file: "progress.txt"
+  checkpoint_file: "processing_checkpoint.pkl"
+
+# Output settings
+output:
+  output_dir: "feeds"
+  archive_dir: "archive/feeds"
+  rejection_log: "rejected_reasons.txt"
+
+# Cache settings
+cache:
+  tld_cache_dir: "cache/tldextract"
+
+# Brand and whitelist files
+brand_file: "australian_indicators_merged.json"
+whitelist_file: "australian_whitelist.json"
+
+# URLScan settings (if used)
+urlscan:
+  export_url: "https://pro.urlscan.io/content/urlscan_phishing_url_feed_sample.json.zip"
+  headers:
+    User-Agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"
+    Accept: "application/zip, application/json"
+
+# Feed fallback URLs
+feed_fallbacks:
+  "https://phish.co.za/latest/phishing-links-ACTIVE.txt": "https://raw.githubusercontent.com/Phishing-Database/Phishing.Database/master/phishing-links-ACTIVE.txt"
+  "https://phish.co.za/latest/phishing-domains-ACTIVE.txt": "https://raw.githubusercontent.com/Phishing-Database/Phishing.Database/master/phishing-domains-ACTIVE.txt"
+
+# Feed headers
+feed_headers:
+  User-Agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"
