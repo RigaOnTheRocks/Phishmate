@@ -104,7 +104,7 @@ populate `banking.txt`, `government.txt` and `utilities.txt`.
 All configuration is stored in `config.yaml`.  Key sections include:
 
 ```yaml
-feeds (these are the data sources we're pulling from):
+feeds <!-- (these are the data sources we're pulling from) --> :
   - https://example.com/phishing.txt
 
 output:
