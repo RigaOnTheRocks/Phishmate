@@ -101,10 +101,13 @@ populate `banking.txt`, `government.txt` and `utilities.txt`.
 
 ## Configuration
 
-All configuration is stored in `config.yaml`.  Key sections include:
+All configuration is stored in `config.yaml`.  
 
+⚠️ "feeds" inside the yaml file are the data sources we're pulling from, not the location of our generated feeds.
+
+Key sections include:
 ```yaml
-feeds <!-- (these are the data sources we're pulling from) --> :
+feeds:
   - https://example.com/phishing.txt
 
 output:
