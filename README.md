@@ -1,4 +1,4 @@
-# Phishmate
+# Phishmate 🦘
 
 This repository contains a Python script that aggregates, normalises and classifies
 phishing domain feeds with a focus on Australian entities.  The script uses
@@ -91,19 +91,19 @@ following table lists each option, its short form, and a brief description.
 | `--start` | `-s` | Generate Australian phishing feeds.  This is the default action when no other flags are supplied.
 | `--reclassify-feeds` | `-r` | Re‑classify existing feed files without fetching remote sources.  Useful when the classification logic has changed.
 | `--compare-feeds` | `-c` | Compare feeds between two dates (YYYY‑MM‑DD) or the latest and previous.  Usage: `--compare-feeds [DATE1] [DATE2]`.
+| `--help` | `-h` | Help menu.
 
-You can also use the standard `-h` or `--help` flag to display this help text.
+💡 `--compare-feeds`  without specifying dates will automatically compare the latest feed and the previous one.
 
 The script will create the `output` directory if it does not exist and will
 populate `banking.txt`, `government.txt` and `utilities.txt`.
-
 
 
 ## Configuration
 
 All configuration is stored in `config.yaml`.  
 
-⚠️ "feeds" inside the yaml file are the data sources we're pulling from, not the location of our generated feeds.
+⚠️ **feeds** inside the yaml file are the data sources we're pulling from, not the location of our generated feeds.
 
 Key sections include:
 ```yaml
