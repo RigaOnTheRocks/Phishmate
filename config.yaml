@@ -5,7 +5,6 @@ feeds:
   - "https://phish.co.za/latest/phishing-links-ACTIVE.txt"
   - "https://phish.co.za/latest/phishing-domains-ACTIVE.txt"
   - "http://data.phishtank.com/data/online-valid.csv"
-  - "http://www.botvrij.eu/data/ioclist.domain.raw"
   - "https://gist.githubusercontent.com/BBcan177/4a8bf37c131be4803cb2/raw"
   - "https://raw.githubusercontent.com/shreshta-labs/newly-registered-domains/refs/heads/main/nrd-1w.csv"
   - "https://phishing.army/download/phishing_army_blocklist_extended.txt"
