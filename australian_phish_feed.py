@@ -1345,15 +1345,16 @@ def classify_host(host: str):
             if not has_aus_context:
                 return False
 
-        # EARLY REJECTION: Reject Aldi without Australian context (German Aldi, US Aldi)
+        # EARLY REJECTION: Reject Aldi unless it is clearly an Australian mobile service.
         if 'aldi' in host_lower:
-            has_aus_context = (
+            # Accept only if the host ends with .au or contains the word "mobile"
+            is_au_mobile = (
                 '.au' in host_lower or
-                any(term in host_lower for term in ['telstra', 'optus', 'tpg', 'vodafone', 'aussiebroadband', 'mobile', 'broadband', 'nbn', 'telecom']) or
-                any(term in host_lower for term in AUSTRALIAN_STATES + ['australia', 'australian'])
+                'mobile' in host_lower
             )
+            # Exclude known non‑Australian Aldi domains
             non_au_aldi = any(term in host_lower for term in ['aldi-sued', 'aldi-nord', 'aldi-de', 'aldi-ch', 'aldi-suisse', 'aldi-us'])
-            if non_au_aldi or not has_aus_context:
+            if non_au_aldi or not is_au_mobile:
                 return False
 
         # EARLY REJECTION: Reject Canadian bank Tangerine
@@ -2049,14 +2050,13 @@ def classify_host(host: str):
         if has_non_australian_entity(host_lower):
             return None, "non_australian_entity"
         
-        # Aldi requires explicit Australian context
+        # Aldi requires explicit Australian mobile context
         if "aldi" in host_lower:
-            has_explicit_au = (
-                has_au_suffix or
-                '.au' in host_lower or '-au' in host_lower or
-                'australia' in host_lower or 'australian' in host_lower
+            is_au_mobile = (
+                '.au' in host_lower or
+                'mobile' in host_lower
             )
-            if not has_explicit_au:
+            if not is_au_mobile:
                 return None, "aldi_no_explicit_au"
         
         # If we have obvious phishing indicators, be more inclusive
@@ -2077,14 +2077,13 @@ def classify_host(host: str):
                 return "utilities", "telecom_common_phishing_pattern"
 
     if util_brand_confident or util_brand_raw:
-        # Aldi requires explicit Australian context
+        # Aldi requires explicit Australian mobile context
         if "aldi" in host_lower:
-            has_explicit_au = (
-                has_au_suffix or 
-                '.au' in host_lower or '-au' in host_lower or
-                'australia' in host_lower or 'australian' in host_lower
+            is_au_mobile = (
+                '.au' in host_lower or
+                'mobile' in host_lower
             )
-            if not has_explicit_au:
+            if not is_au_mobile:
                 return None, "aldi_no_explicit_australian_context"
         if has_au_suffix or has_australian_context(host, ext, rd):
             return "utilities", "telecom_brand_fallback"
