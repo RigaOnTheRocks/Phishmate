@@ -1575,7 +1575,11 @@ def classify_host(host: str):
     if host.startswith('bafybei') or host.startswith('bafkre') or 'ipfs' in host_lower or 'dweb.link' in host_lower or 'nftstorage.link' in host_lower:
         has_au_brand = any(
             _boundary_match(host_lower, brand) or _boundary_match(rd_lower, brand)
-            for brand in ['qantas', 'jetstar', 'virgin', 'ausgrid', 'originenergy', 'agl']
+            # Added Qantas aliases that were previously rejected
+            for brand in ['qantas', 'qf', 'jetstar', 'virgin', 'ausgrid', 'originenergy', 'agl',
+                         'qantareward', 'qantasairline', 'qantascredit-home', 'qantasgiftprogram',
+                         'qantasmoney-reward', 'qantaspoints', 'qantasrdws2025', 'qantasredem',
+                         'qantasrewards', 'qantelyx']
         )
         if not has_au_brand:
             return None, "ipfs_cid_hash"
