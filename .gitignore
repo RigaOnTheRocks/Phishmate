@@ -1,1 +1,4 @@
 .DS_Store
+# Exclude archived feed files from version control
+archive/
+archive/feeds/
